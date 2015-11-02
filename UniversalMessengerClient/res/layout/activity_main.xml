@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+	android:layout_height="match_parent" 
+	android:background="@drawable/messenger_background">
+
+		<Button android:id="@+id/signup"
+			android:textColor="@android:color/black"
+			android:textStyle="bold"
+			android:textSize="30dp"
+			android:layout_weight="1"	
+			android:layout_width="wrap_content"
+			android:layout_height="70dp"
+			android:layout_centerInParent="true"
+			android:layout_margin="30dp"
+			android:background="@drawable/green_really_dark"
+			android:text="@string/signup" />
+		
+		<Button android:id="@+id/signin"
+			android:textColor="@android:color/black"
+			android:textStyle="bold"
+			android:textSize="30dp"
+			android:layout_weight="1"	    
+			android:layout_width="wrap_content"
+			android:layout_height="70dp"
+			android:layout_above="@+id/signup"
+			android:layout_centerHorizontal="true"
+			android:background="@drawable/green_really_dark"
+			android:layout_margin="30dp"
+			android:text="@string/signin" />
+		
+		<Button android:id="@+id/close"
+			android:textColor="@android:color/black"
+			android:textStyle="bold"
+			android:textSize="30dp"
+			android:layout_weight="1"	    
+			android:layout_width="wrap_content"
+			android:layout_height="70dp"
+			android:layout_centerHorizontal="true"
+			android:layout_below="@+id/signup"
+			android:layout_margin="30dp"
+			android:background="@drawable/green_really_dark"
+			android:text="@string/close" />
+</RelativeLayout>
