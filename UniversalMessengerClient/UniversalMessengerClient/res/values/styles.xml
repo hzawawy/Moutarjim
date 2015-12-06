@@ -1,0 +1,76 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="MyTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+	    <item name="android:windowNoTitle">true</item>
+    	<!--We will be using the toolbar so no need to show ActionBar-->
+    	<item name="android:windowActionBar">false</item>
+    	<!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+    	<!-- colorPrimary is used for the default action bar background -->
+    	<item name="android:colorPrimary">#2196F3</item>
+    	<!-- colorPrimaryDark is used for the status bar -->
+    	<item name="android:colorPrimaryDark">#1976D2</item>
+    	<!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    	<item name="android:colorAccent">#FF4081</item>
+    	<!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+  </style>
+  
+      <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/unselected</item>
+    </style>
+    
+    <style name="ButtonText">
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">30dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+    </style>
+	    
+	<style name="MediumButton">
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">15dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	</style>
+	    	    
+	<style name="SmallButton" parent="android:Widget.Button.Small">
+    	<item name="android:minHeight">0dp</item>
+    	<item name="android:minWidth">0dp</item>
+	</style>
+</resources>

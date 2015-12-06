@@ -10,7 +10,6 @@ import com.example.messenger.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 	   public void onCreate(Bundle savedInstanceState) {
 	      super.onCreate(savedInstanceState);
 	      setContentView(R.layout.activity_main);
+//	      getActionBar().setDisplayHomeAsUpEnabled(true);
+	      
+//	      TextView msgTextView = (TextView) findViewById(R.id.textView2);
+//	      msgTextView.setText("Enter your first name: ");
 
 	      // Adding the signup button
 	      this.signupButton = (Button)this.findViewById(R.id.signup);
@@ -93,28 +96,29 @@ public class MainActivity extends AppCompatActivity {
 	   
 	   private void signup(){
 		   Intent intent = new Intent(this, SignupActivity.class);
-		   Log.i("MOUTARJIM", "signin starting");
 		   startActivityForResult(intent, SIGNUP_CODE);
 	   }
 	   
 	   private void signin(){
 		   Intent intent = new Intent(this, SigninActivity.class);
-		   Log.i("MOUTARJIM", "signin starting");
 		   startActivityForResult(intent, SIGNIN_CODE);
 	   }
 	   
 	   @Override 
 	   public void onActivityResult(int requestCode, int resultCode, Intent data) {     
+//			super.onActivityResult(requestCode, resultCode, data);
+//			if (requestCode == SIGNUP_CODE) {
+//			     if(resultCode == RESULT_OK){
+//			      String stredittext=data.getStringExtra("edittextvalue");
+//			}
+		   
 			super.onActivityResult(requestCode, resultCode, data);
-			Log.i("MOUTARJIM", "received result from child activity");
-		    switch(requestCode) { 
+		     switch(requestCode) { 
 		       case (SIGNUP_CODE): { 
 		    	   if (resultCode == RESULT_OK) { 
-		    		   Log.i("MOUTARJIM", "received result from SIGNUP activity");
 		    		   String signupData = data.getStringExtra("signup");
 		    		   connectionMgr.setAction("signup");
 		    		   connectionMgr.setSendData(signupData.getBytes());
-		    		   Log.i("MOUTARJIM", "received result from SIGNUP activity, signup data: " + new String(signupData.getBytes()));
 			   			try {
 			   				connectionMgr.execute().get(3000, TimeUnit.MILLISECONDS);
 			   			} catch(TimeoutException te){
@@ -124,9 +128,7 @@ public class MainActivity extends AppCompatActivity {
 			   			} catch(InterruptedException ie){
 				   			signinComplete(getString(R.string.interruptionexecption));			   				
 			   			}
-			   			wait(30);
-			   			Log.i("MOUTARJIM", "received confirmation from server for SIGNUP activity, signup response: " + new String(connectionMgr.getReceivedData()));
-			   			signupComplete(new String(connectionMgr.getReceivedData()));
+		    		   signupComplete(new String(connectionMgr.getReceivedData()));
 		    	   } 
 		    	   break; 
 		       } 
@@ -135,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
 			   			String signinData = data.getStringExtra("signin");
 			   			connectionMgr.setAction("signin");
 			   			connectionMgr.setSendData(signinData.getBytes());
-			   			Log.i("MOUTARJIM", "received result from SIGNIN activity, signin data: " + new String(signinData.getBytes()));
 			   			try {
 			   				connectionMgr.execute().get(3000, TimeUnit.MILLISECONDS);
 			   			} catch(TimeoutException te){
@@ -145,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
 			   			} catch(InterruptedException ie){
 				   			signinComplete(getString(R.string.interruptionexecption));			   				
 			   			}
-			   			wait(30);
-			   			Log.i("MOUTARJIM", "received confirmation from server for SIGNIN activity, signin response: " + new String(connectionMgr.getReceivedData()));
 			   			signinComplete(new String(connectionMgr.getReceivedData()));
 				        // TODO Update your TextView.
 			         } 
@@ -154,18 +153,6 @@ public class MainActivity extends AppCompatActivity {
 		       }
 		     } 
 	   	}
-
-	private void wait(int waitCount) {
-		int counter = 0;
-		while (!connectionMgr.isResponseReceived() && counter<waitCount){
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException ie){
-				break;
-			}
-			counter++;
-		}
-	}
 	   private void signupComplete(String signupResult){
 		   if (signupResult.contains(getString(R.string.successful_signup))){
 			   

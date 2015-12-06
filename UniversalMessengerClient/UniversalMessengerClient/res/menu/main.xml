@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main">
+
+    <item android:id="@+id/file"
+          android:title="@string/file" 
+          android:icon="@drawable/ic_launcher"
+          android:showAsAction="ifRoom">
+        <!-- "file" submenu -->
+        <menu>
+            <item android:id="@+id/create_new"
+                  android:title="@string/create_new" 
+                  android:showAsAction="never"/>
+            <item android:id="@+id/open"
+                  android:title="@string/open" 
+                  android:showAsAction="never"/>
+        </menu>
+    </item>
+   
+    <item android:id="@+id/close"
+    	android:orderInCategory="100"
+   		android:showAsAction="always"
+    	android:title="@string/close"/>
+</menu>
